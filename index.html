@@ -98,6 +98,12 @@
             0%, 100% { transform: translate(0px, 0px); }
             50% { transform: translate(-8px, 8px); }
         }
+        @keyframes jumpAir {
+            0%, 100% { transform: translateY(0px); }
+            25% { transform: translateY(8px); }
+            55% { transform: translateY(-22px); }
+        }
+       
 
         .anim-squat { animation: squatMove 2.6s ease-in-out infinite; }
         .anim-press { animation: armPress 2.4s ease-in-out infinite; }
@@ -113,6 +119,9 @@
         .anim-hinge { transform-origin: 95px 110px; animation: deadliftHinge 2.8s ease-in-out infinite; }
         .anim-pushup { animation: pushupLean 2.4s ease-in-out infinite; }
         .anim-pulse { animation: pulseGlow 2s ease-in-out infinite; }
+        .anim-jump { animation: jumpAir 1.8s ease-in-out infinite; }
+
+        
 
         /* Hide scrollbars for horizontal pills */
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -597,13 +606,73 @@
                             <line x1="100" y1="64" x2="118" y2="72" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
                             <circle cx="122" cy="72" r="9" fill="${c}"/>
                         </g>
+                    </svg>`,
+                
+                // Salto explosivo desde silla / Contraste de salto
+                boxJump: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M52 145 L52 102 L78 102 L78 145 M52 102 L52 74" stroke="#64748b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <g class="anim-jump">
+                            <circle cx="110" cy="36" r="10" fill="${c}"/>
+                            <line x1="110" y1="48" x2="110" y2="90" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M110 58 L92 32 M110 58 L128 32" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M110 90 L98 128 M110 90 L122 128" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round"/>
+                        </g>
+                        <path d="M158 110 L158 45 M151 54 L158 44 L165 54" stroke="${c}" stroke-width="3" stroke-linecap="round" fill="none" class="anim-pulse"/>
+                    </svg>`,
+
+                // Sentadilla búlgara con pie apoyado en silla
+                bulgarianSplit: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M45 145 L45 100 L72 100 L72 145 M45 100 L45 72" stroke="#64748b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <g class="anim-squat">
+                            <circle cx="112" cy="36" r="10" fill="${c}"/>
+                            <line x1="112" y1="48" x2="112" y2="92" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="112" y1="58" x2="112" y2="96" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <rect x="104" y="94" width="16" height="7" rx="2" fill="${c}"/>
+                            <line x1="112" y1="92" x2="134" y2="112" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M112 92 L92 114 L68 100" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </g>
+                        <line x1="134" y1="112" x2="134" y2="145" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round"/>
+                    </svg>`,
+
+                // Rebotes reactivos de tobillo (Pogo Jumps)
+                pogoJump: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <g class="anim-jump">
+                            <circle cx="100" cy="34" r="10" fill="${c}"/>
+                            <line x1="100" y1="46" x2="100" y2="90" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <path d="M100 56 L82 76 M100 56 L118 76" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="96" y1="90" x2="92" y2="132" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                            <line x1="104" y1="90" x2="108" y2="132" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                        </g>
+                        <path d="M80 140 Q100 128 120 140" stroke="${c}" stroke-width="2.5" fill="none" class="anim-pulse"/>
+                    </svg>`,
+
+                // Marcha activa con carga arriba de la cabeza
+                overheadMarch: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="46" r="10" fill="${c}"/>
+                        <line x1="100" y1="58" x2="100" y2="98" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <path d="M96 62 L86 28 L100 24 L114 28 L104 62" stroke="#cbd5e1" stroke-width="4" stroke-linejoin="round" fill="none"/>
+                        <circle cx="100" cy="20" r="8" fill="${c}"/>
+                        <g class="anim-march-l">
+                            <path d="M96 98 L82 112 L82 142" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                        </g>
+                        <g class="anim-march-r">
+                            <path d="M104 98 L114 116 L114 142" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                        </g>
                     </svg>`
             };
             return svgs[type] || svgs.squatChair;
         }
 
         // ==========================================
-        // 2. COMPLETE WORKOUT DATA (AURA, FELIX, ETC.)
+        // 2. COMPLETE WORKOUT DATA (AURA, FELIX, DYLAN, JESUS.)
         // ==========================================
         const PROFILES = {
             aura: {
@@ -931,25 +1000,251 @@
            dylan: {
                 id: "dylan",
                 name: "Dylan",
-                meta: "En construcción",
-                badge: "En configuración",
+                meta: "57-60 kg • Mar, Jue y Sáb",
+                badge: "3 Días • Salto, Definición y Resistencia",
                 themeColor: "#e11d48", // Rojo Carmesí
                 accentClass: "rose",
                 glowClass: "led-glow-dylan",
-                placeholder: true,
-                placeholderText: "Espacio reservado para rutina personalizada de Dylan (Fuerza, Calistenia o Hipertrofia con el kit de 20 kg y bandas)."
+                summaryTitle: "Plan de Salto Vertical, Definición y Resistencia (Voleibol)",
+                summaryDesc: "Sesiones de 25 minutos con método de contraste, superseries y descansos de 45s para ganar potencia de salto y definición sin fatigar las piernas antes de los días de cancha (Lun, Mié y Vie).",
+                warmup: "Movilidad dinámica de hombros, cadera y tobillos, seguida de 1 minuto de trote suave y saltos cortos de activación en el puesto (4 min).",
+                cooldown: "Descarga con el rodillo de espuma (foam roller) en muslos, pantorrillas y espalda para recuperar los tendones del impacto (3 min).",
+                restSuggestion: 45,
+                days: [
+                    {
+                        id: "martes",
+                        label: "Martes",
+                        focus: "Fuerza-Resistencia de Piernas y Core (Sin impacto)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45s de descanso",
+                        exercises: [
+                            {
+                                id: "d_mar_1",
+                                name: "Sentadilla búlgara en silla",
+                                weight: "Mancuernas: 3 a 4 kg c/u (10 por pierna)",
+                                desc: "Apoya un empeine atrás en la silla y baja controlado con mancuernas para ganar fuerza de empuje individual en cada pierna.",
+                                svg: "bulgarianSplit"
+                            },
+                            {
+                                id: "d_mar_2",
+                                name: "Peso muerto rumano con barra",
+                                weight: "Barra: 8 a 10 kg + Guantes (12 rep)",
+                                desc: "Baja con la barra hasta las rodillas manteniendo la espalda recta y sube firme apretando glúteos e isquiotibiales para fortalecer la cadena posterior del salto.",
+                                svg: "romanianDeadlift"
+                            },
+                            {
+                                id: "d_mar_3",
+                                name: "Isometría defensiva en pared con banda",
+                                weight: "Banda sobre rodillas • 40s por serie",
+                                desc: "Mantén media sentadilla contra la pared durante 40 segundos abriendo las rodillas contra la banda para blindar los tendones rotulianos y aguantar posturas bajas.",
+                                svg: "wallSit"
+                            },
+                            {
+                                id: "d_mar_4",
+                                name: "Marcha activa con carga arriba (Core)",
+                                weight: "Pesa Rusa: 6 a 8 kg • 40s por serie",
+                                desc: "Sostén la pesa rusa con los brazos estirados sobre la cabeza y marcha rápido en el puesto por 40 segundos apretando todo el abdomen.",
+                                svg: "overheadMarch"
+                            }
+                        ]
+                    },
+                    {
+                        id: "jueves",
+                        label: "Jueves",
+                        focus: "Tren Superior Definido, Hombros y Fondo Físico",
+                        repsInfo: "3 series de 12 a 15 repeticiones • 45s de descanso",
+                        exercises: [
+                            {
+                                id: "d_jue_1",
+                                name: "Flexiones dinámicas en soportes",
+                                weight: "Soportes del kit (En cama o silla firme)",
+                                desc: "Usa los agarres del kit sobre el borde de la cama o una silla firme, bajando en 2 segundos y empujando rápido para marcar pecho, hombros y tríceps.",
+                                svg: "inclinePushup"
+                            },
+                            {
+                                id: "d_jue_2",
+                                name: "Remo con barra + Banda (Superserie)",
+                                weight: "Barra: 8 a 10 kg (12) + Banda Suave (15)",
+                                desc: "Haz 12 remos inclinados con barra y pasa sin descanso a 15 aperturas con banda para definir la espalda y proteger los hombros al rematar.",
+                                svg: "barbellRow"
+                            },
+                            {
+                                id: "d_jue_3",
+                                name: "Push Press con mancuernas",
+                                weight: "Mancuernas: 4 kg c/u (12 rep)",
+                                desc: "Desde los hombros, usa un mínimo impulso de piernas para subir las mancuernas hacia el techo a ritmo continuo, ganando resistencia para bloquear todo el partido.",
+                                svg: "thruster"
+                            },
+                            {
+                                id: "d_jue_4",
+                                name: "Leñador rápido de pie (Core de ataque)",
+                                weight: "1 Mancuerna: 4 a 5 kg (12 por lado)",
+                                desc: "Gira el torso con velocidad controlada llevando una mancuerna en diagonal de cadera a hombro para marcar oblicuos y ganar látigo en el aire.",
+                                svg: "coreTwist"
+                            }
+                        ]
+                    },
+                    {
+                        id: "sabado",
+                        label: "Sábado",
+                        focus: "Explosividad de Salto (Método Contraste) y Brazos",
+                        repsInfo: "3 series explosivas • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "d_sab_1",
+                                name: "Contraste de salto (Pesa + Salto libre)",
+                                weight: "Pesa Rusa: 8 a 10 kg (6 rep + 6 saltos)",
+                                desc: "Haz 6 sentadillas rápidas con la pesa al pecho, déjala en la silla de inmediato y realiza 6 saltos verticales máximos buscando el techo.",
+                                svg: "boxJump"
+                            },
+                            {
+                                id: "d_sab_2",
+                                name: "Despegue a una pierna desde silla",
+                                weight: "Peso Corporal (5 saltos por pierna)",
+                                desc: "Sentado en la silla, impúlsate hacia arriba saltando con una sola pierna y amortigua cayendo con ambos pies para disparar la reactividad de tu batida.",
+                                svg: "boxJump"
+                            },
+                            {
+                                id: "d_sab_3",
+                                name: "Pogo Jumps + Pantorrillas",
+                                weight: "15s rebotes + Mancuernas 4 kg (12 rep)",
+                                desc: "Haz 15 segundos de rebotes rápidos solo con la punta de los pies y pasa directo a 12 elevaciones de talones controladas con mancuernas.",
+                                svg: "pogoJump"
+                            },
+                            {
+                                id: "d_sab_4",
+                                name: "Superserie marcada de brazos",
+                                weight: "Barra: 8 kg (12) + Pesa Rusa: 6-8 kg (12)",
+                                desc: "Realiza 12 curls de bíceps con barra seguidos sin pausa de 12 extensiones de tríceps tras nuca con pesa rusa para definir ambos brazos por igual.",
+                                svg: "bicepCurl"
+                            }
+                        ]
+                    }
+                ]
             },
 
             jesus: {
                 id: "jesus",
-                name: "Jesus",
-                meta: "En construcción",
-                badge: "En configuración",
+                name: "Jesús",
+                meta: "27-30 kg • Mar, Jue y Sáb",
+                badge: "3 Días • Músculo y Salto (Voley)",
                 themeColor: "#ffffff", // Blanco
                 accentClass: "white",
                 glowClass: "led-glow-jesus",
-                placeholder: true,
-                placeholderText: "Espacio reservado para agregar la rutina de Jesús cuando decidan sus días y objetivos."
+                summaryTitle: "Plan de Ganancia Muscular y Potencia de Salto",
+                summaryDesc: "Sesiones de 20 a 25 minutos con cargas controladas, saltos explosivos y descansos completos (60s) para ganar fuerza y masa muscular sin quemar calorías de más.",
+                warmup: "Movilidad suave de hombros, cadera y tobillos, seguida de 1 minuto de marcha activa y saltos suaves en el puesto (3 min).",
+                cooldown: "Masaje con el rodillo de espuma en muslos y pantorrillas sentado para descargar los tendones tras el entrenamiento (3 min).",
+                restSuggestion: 60,
+                days: [
+                    {
+                        id: "martes",
+                        label: "Martes",
+                        focus: "Fuerza y Masa Muscular en Piernas (Sin impacto)",
+                        repsInfo: "3 series de 8 a 10 repeticiones • 60s de descanso",
+                        exercises: [
+                            {
+                                id: "j_mar_1",
+                                name: "Sentadilla controlada con pesa rusa",
+                                weight: "Pesa Rusa: 4 a 5 kg (10 rep)",
+                                desc: "Bajar en 3 segundos y subir con fuerza sosteniendo el peso al pecho para estimular el crecimiento de los muslos.",
+                                svg: "squatChair"
+                            },
+                            {
+                                id: "j_mar_2",
+                                name: "Sentadilla búlgara en silla",
+                                weight: "Peso Corporal o 2 kg (8 por pierna)",
+                                desc: "Apoyar un empeine atrás en la silla y bajar controlado para ganar fuerza en cada pierna sin sobrecargar la espalda.",
+                                svg: "bulgarianSplit"
+                            },
+                            {
+                                id: "j_mar_3",
+                                name: "Peso muerto rumano con barra",
+                                weight: "Barra: 4 a 6 kg + Guantes (10 rep)",
+                                desc: "Deslizar la barra por los muslos hasta las rodillas con la espalda recta para fortalecer isquiotibiales y glúteos.",
+                                svg: "romanianDeadlift"
+                            },
+                            {
+                                id: "j_mar_4",
+                                name: "Leñador diagonal de pie (Core)",
+                                weight: "1 Mancuerna: 2 a 3 kg (10 por lado)",
+                                desc: "Girar el torso llevando una mancuerna desde la cadera hasta arriba del hombro opuesto para fortalecer el abdomen.",
+                                svg: "coreTwist"
+                            }
+                        ]
+                    },
+                    {
+                        id: "jueves",
+                        label: "Jueves",
+                        focus: "Tren Superior Completo (Piernas en descanso para el viernes)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 60s de descanso",
+                        exercises: [
+                            {
+                                id: "j_jue_1",
+                                name: "Flexiones inclinadas",
+                                weight: "Peso Corporal (En cama, silla o soportes)",
+                                desc: "Manos apoyadas en el borde de la cama o silla firme (o usando los soportes del kit) para trabajar pecho, hombros y tríceps.",
+                                svg: "inclinePushup"
+                            },
+                            {
+                                id: "j_jue_2",
+                                name: "Remo inclinado con barra",
+                                weight: "Barra: 4 a 6 kg + Guantes (10 rep)",
+                                desc: "Llevar la barra hacia el abdomen apretando la espalda para ganar fuerza de tracción y postura.",
+                                svg: "barbellRow"
+                            },
+                            {
+                                id: "j_jue_3",
+                                name: "Press de hombros de pie",
+                                weight: "Mancuernas: 2 kg c/u (10 rep)",
+                                desc: "Subir las mancuernas desde las orejas hacia el techo manteniendo el abdomen firme.",
+                                svg: "shoulderPress"
+                            },
+                            {
+                                id: "j_jue_4",
+                                name: "Aperturas con banda elástica",
+                                weight: "Banda Elástica: Suave (12 rep)",
+                                desc: "Estirar la banda suave frente al pecho hacia los lados para fortalecer el hombro y prevenir molestias por los remates del viernes.",
+                                svg: "bandPullApart"
+                            }
+                        ]
+                    },
+                    {
+                        id: "sabado",
+                        label: "Sábado",
+                        focus: "Potencia de Salto Vertical y Brazos",
+                        repsInfo: "3 series explosivas • 60 a 75s de descanso",
+                        exercises: [
+                            {
+                                id: "j_sab_1",
+                                name: "Salto explosivo desde silla (Box Squat Jump)",
+                                weight: "Peso Corporal (6 a 8 saltos máximos)",
+                                desc: "Sentarse en la silla, impulsarse con los brazos y saltar buscando la máxima altura, cayendo suave en semisentadilla.",
+                                svg: "boxJump"
+                            },
+                            {
+                                id: "j_sab_2",
+                                name: "Rebotes reactivos de tobillo (Pogo Jumps)",
+                                weight: "Peso Corporal (15 segundos continuos)",
+                                desc: "Saltos rápidos y continuos rebotando solo con la punta de los pies durante 15 segundos para ganar velocidad de despegue.",
+                                svg: "pogoJump"
+                            },
+                            {
+                                id: "j_sab_3",
+                                name: "Elevación de talones explosiva",
+                                weight: "Mancuernas: 2 a 3 kg c/u (12 rep)",
+                                desc: "Subir rápido en puntas de pie y bajar lento en 3 segundos sosteniendo mancuernas para potenciar las pantorrillas.",
+                                svg: "calfRaise"
+                            },
+                            {
+                                id: "j_sab_4",
+                                name: "Superserie de brazos (Bíceps + Tríceps)",
+                                weight: "Mancuernas: 2 kg c/u (10 + 10 rep)",
+                                desc: "Hacer 10 curls de bíceps con mancuernas seguidos de 10 extensiones de tríceps tras nuca para darle volumen a los brazos.",
+                                svg: "bicepCurl"
+                            }
+                        ]
+                    }
+                ]
             }
         };
 
