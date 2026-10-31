@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Entrenamiento en Casa - Guía Familiar</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #090d16;
+            color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Ambient LED Glow Effects */
+        .led-glow-aura {
+            box-shadow: 0 0 35px -5px rgba(148, 163, 184, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        }
+        .led-glow-felix {
+            box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+        .led-glow-dylan {
+            box-shadow: 0 0 35px -5px rgba(225, 29, 72, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+        .led-glow-jesus {
+            box-shadow: 0 0 35px -5px rgba(255, 255, 255, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Custom SVG Keyframe Animations for Exercise Illustrations */
+        @keyframes squatMove {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(16px); }
+        }
+        @keyframes armPress {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
+        }
+        @keyframes rowPull {
+            0%, 100% { transform: translate(0px, 0px); }
+            50% { transform: translate(-8px, -10px); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 0.85; }
+        }
+        @keyframes legAbduct {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-28deg); }
+        }
+        @keyframes legKickback {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(32deg); }
+        }
+        @keyframes calfRaise {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes bandExpand {
+            0%, 100% { transform: scaleX(0.75); }
+            50% { transform: scaleX(1.35); }
+        }
+        @keyframes woodchop {
+            0%, 100% { transform: translate(-12px, 14px); }
+            50% { transform: translate(14px, -16px); }
+        }
+        @keyframes torsoTwist {
+            0%, 100% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+        }
+        @keyframes kneeMarchLeft {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-16px); }
+        }
+        @keyframes kneeMarchRight {
+            0%, 100% { transform: translateY(-16px); }
+            50% { transform: translateY(0px); }
+        }
+        @keyframes deadliftHinge {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(28deg); }
+        }
+        @keyframes pushupLean {
+            0%, 100% { transform: translate(0px, 0px); }
+            50% { transform: translate(-8px, 8px); }
+        }
+
+        .anim-squat { animation: squatMove 2.6s ease-in-out infinite; }
+        .anim-press { animation: armPress 2.4s ease-in-out infinite; }
+        .anim-row { animation: rowPull 2.4s ease-in-out infinite; }
+        .anim-abduct { transform-origin: 100px 110px; animation: legAbduct 2.4s ease-in-out infinite; }
+        .anim-kickback { transform-origin: 95px 110px; animation: legKickback 2.4s ease-in-out infinite; }
+        .anim-calf { animation: calfRaise 2s ease-in-out infinite; }
+        .anim-band { transform-origin: 100px 75px; animation: bandExpand 2.4s ease-in-out infinite; }
+        .anim-chop { animation: woodchop 2.6s ease-in-out infinite; }
+        .anim-twist { animation: torsoTwist 2.2s ease-in-out infinite; }
+        .anim-march-l { animation: kneeMarchLeft 1.4s ease-in-out infinite; }
+        .anim-march-r { animation: kneeMarchRight 1.4s ease-in-out infinite; }
+        .anim-hinge { transform-origin: 95px 110px; animation: deadliftHinge 2.8s ease-in-out infinite; }
+        .anim-pushup { animation: pushupLean 2.4s ease-in-out infinite; }
+        .anim-pulse { animation: pulseGlow 2s ease-in-out infinite; }
+
+        /* Hide scrollbars for horizontal pills */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="min-h-screen pb-36 selection:bg-emerald-500 selection:text-white">
+
+    <!-- Ambient Top Background Light -->
+    <div id="ambient-bg" class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-emerald-500/10 blur-3xl pointer-events-none transition-colors duration-500 -z-10"></div>
+
+    <!-- Header & Equipment Trigger -->
+    <header class="sticky top-0 z-30 backdrop-blur-xl bg-[#090d16]/85 border-b border-slate-800/80 px-4 py-3.5">
+        <div class="max-w-3xl mx-auto flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <div id="brand-badge" class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-extrabold text-lg shadow-inner">
+                    ⚡
+                </div>
+                <div>
+                    <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white leading-tight">Gym en Casa</h1>
+                    <p class="text-xs text-slate-400"> • Rutinas 100% de pie • </p>
+                </div>
+            </div>
+            <button onclick="toggleEquipmentModal()" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-xs sm:text-sm font-semibold text-slate-200 transition active:scale-95">
+                <span>🏋️‍♂️</span>
+                <span>Equipo</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-3xl mx-auto px-4 pt-4 space-y-5">
+
+        <!-- 1. Multi-Profile Selector -->
+        <section aria-label="Selector de Perfil">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona tu perfil</span>
+                <span id="profile-status-pill" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    5 Días • Tonificación y Fuerza
+                </span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="profile-selector">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Profile Summary Banner -->
+        <section id="profile-banner" class="rounded-2xl bg-slate-900/90 border border-slate-800 p-4 led-glow-mama transition-all duration-300">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- Day Selector Tabs -->
+        <section id="day-tabs-section" class="space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Día de entrenamiento</span>
+                <button onclick="resetCurrentDayProgress()" class="text-xs font-semibold text-slate-400 hover:text-rose-400 transition flex items-center gap-1 py-1 px-2 rounded-lg hover:bg-slate-800/60">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    Reiniciar series del día
+                </button>
+            </div>
+            <div id="day-tabs" class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Workout Content Area -->
+        <div id="workout-container" class="space-y-4">
+            <!-- Populated by JS -->
+        </div>
+
+    </main>
+
+    <!-- Floating Bottom Rest Timer Bar -->
+    <div class="fixed bottom-0 inset-x-0 z-40 bg-[#0b101b]/95 backdrop-blur-xl border-t border-slate-800 px-4 py-3 shadow-2xl">
+        <div class="max-w-3xl mx-auto flex flex-col gap-2">
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div id="timer-bar" class="bg-emerald-500 h-full w-0 transition-all duration-300"></div>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+                <!-- Countdown Display -->
+                <div class="flex items-center gap-2.5">
+                    <div id="timer-badge" class="w-11 h-11 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-mono text-lg font-extrabold text-white">
+                        00:00
+                    </div>
+                    <div>
+                        <p id="timer-status-text" class="text-xs font-bold text-slate-300 uppercase tracking-wide">Descanso</p>
+                        <p class="text-[11px] text-slate-400">Toca un tiempo al terminar tu serie</p>
+                    </div>
+                </div>
+
+                <!-- Quick Timer Buttons -->
+                <div class="flex items-center gap-1.5 sm:gap-2">
+                    <button onclick="startRestTimer(45)" class="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-xs sm:text-sm font-bold text-emerald-400 transition">
+                        45s
+                    </button>
+                    <button onclick="startRestTimer(60)" class="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-xs sm:text-sm font-bold text-cyan-400 transition">
+                        60s
+                    </button>
+                    <button onclick="startRestTimer(75)" class="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-xs sm:text-sm font-bold text-violet-400 transition">
+                        75s
+                    </button>
+                    <button onclick="stopRestTimer()" title="Detener reloj" class="p-2.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 active:scale-95 border border-rose-500/30 text-rose-400 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Equipment Modal -->
+    <div id="equipment-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-5 space-y-4 shadow-2xl animate-fadeIn">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🏋️‍♂️</span>
+                    <h2 class="text-lg font-extrabold text-white">Equipo Disponible en Casa</h2>
+                </div>
+                <button onclick="toggleEquipmentModal()" class="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">
+                    ✕
+                </button>
+            </div>
+            <div class="space-y-3 text-sm text-slate-300">
+                <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                    <p class="font-bold text-white">1. Kit de Pesas Convertible 4 en 1 (20 kg total)</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Configurable como par de mancuernas, barra larga o pesa rusa (kettlebell) con agarre.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                    <p class="font-bold text-white">2. Set de 5 Bandas Elásticas Cerradas Sportfitness</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Distintos niveles de tensión para piernas, glúteos, espalda alta y postura.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                    <p class="font-bold text-white">3. Rodillo de Espuma (Foam Roller)</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Para descarga muscular al final de la sesión (usado contra la pared o sentado en silla).</p>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-800/70 border border-slate-700/70">
+                    <p class="font-bold text-white">4. Guantes Deportivos con Muñequera</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Ajustar bien la muñequera en los ejercicios de empuje, barra y mancuernas para dar firmeza articular.</p>
+                </div>
+                <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs">
+                    <strong>Nota importante:</strong> No se utiliza colchoneta. Todos los ejercicios están diseñados 100% de pie o con apoyo en una silla o mesa firme.
+                </div>
+            </div>
+            <button onclick="toggleEquipmentModal()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. CUSTOM ANIMATED SVG ILLUSTRATIONS
+        // ==========================================
+        function getExerciseSVG(type, accentColor = "#10b981") {
+            const c = accentColor;
+            const svgs = {
+                // Sentadilla a la silla / Sentadilla libre con pesa al pecho
+                squatChair: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <!-- Floor -->
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Chair -->
+                        <path d="M55 145 L55 95 L82 95 L82 145 M55 95 L55 65" stroke="#64748b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <!-- Animated Upper Body + Thighs -->
+                        <g class="anim-squat">
+                            <!-- Head -->
+                            <circle cx="105" cy="38" r="11" fill="${c}"/>
+                            <!-- Torso -->
+                            <line x1="105" y1="50" x2="92" y2="95" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Arms holding Kettlebell at chest -->
+                            <path d="M102 60 L122 72 L115 55" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <!-- Kettlebell -->
+                            <circle cx="120" cy="60" r="8" fill="${c}"/>
+                            <!-- Thigh -->
+                            <line x1="92" y1="95" x2="115" y2="110" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        </g>
+                        <!-- Lower Leg fixed to floor -->
+                        <line x1="115" y1="112" x2="115" y2="145" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Direction Arrow -->
+                        <path d="M155 55 L155 95 M149 88 L155 96 L161 88" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none" class="anim-pulse"/>
+                    </svg>`,
+
+                // Desplantes estáticos / Zancada hacia atrás / Paso atrás corto
+                lunge: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <g class="anim-squat">
+                            <circle cx="100" cy="36" r="11" fill="${c}"/>
+                            <line x1="100" y1="48" x2="100" y2="92" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Arm & Dumbbell -->
+                            <line x1="100" y1="58" x2="100" y2="96" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <rect x="92" y="94" width="16" height="7" rx="2" fill="${c}"/>
+                            <!-- Front & Back Thighs -->
+                            <path d="M100 92 L128 112 M100 92 L72 118" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        </g>
+                        <!-- Lower legs -->
+                        <line x1="128" y1="112" x2="128" y2="145" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+                        <line x1="72" y1="118" x2="55" y2="145" stroke="#94a3b8" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M158 55 L158 95 M152 88 L158 96 L164 88" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none" class="anim-pulse"/>
+                    </svg>`,
+
+                // Caminata lateral con banda
+                lateralBand: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="38" r="11" fill="${c}"/>
+                        <line x1="100" y1="50" x2="100" y2="94" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Hands clasped in front -->
+                        <path d="M100 60 L85 75 L100 78 L115 75 Z" stroke="#cbd5e1" stroke-width="4" fill="none"/>
+                        <!-- Left leg steady -->
+                        <line x1="100" y1="94" x2="82" y2="145" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Right leg stepping out with band -->
+                        <g class="anim-abduct">
+                            <line x1="100" y1="94" x2="120" y2="145" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        </g>
+                        <!-- Elastic Band above knees -->
+                        <rect x="78" y="112" width="46" height="6" rx="3" fill="${c}" class="anim-band"/>
+                        <!-- Side Arrows -->
+                        <path d="M145 120 L168 120 M162 115 L169 120 L162 125" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    </svg>`,
+
+                // Elevación de talones de pie
+                calfRaise: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <g class="anim-calf">
+                            <circle cx="100" cy="38" r="11" fill="${c}"/>
+                            <line x1="100" y1="50" x2="100" y2="95" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="100" y1="95" x2="92" y2="138" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                            <line x1="100" y1="95" x2="108" y2="138" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Dumbbells at sides -->
+                            <line x1="86" y1="56" x2="82" y2="94" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="114" y1="56" x2="118" y2="94" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <rect x="75" y="92" width="14" height="6" rx="2" fill="${c}"/>
+                            <rect x="111" y="92" width="14" height="6" rx="2" fill="${c}"/>
+                        </g>
+                        <path d="M150 135 L150 100 M144 107 L150 99 L156 107" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none" class="anim-pulse"/>
+                    </svg>`,
+
+                // Remo inclinado con barra
+                barbellRow: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Legs bent -->
+                        <path d="M100 145 L108 112 L82 92" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <!-- Torso leaned forward -->
+                        <line x1="82" y1="92" x2="122" y2="60" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="132" cy="52" r="10" fill="${c}"/>
+                        <!-- Rowing Arms & Barbell -->
+                        <g class="anim-row">
+                            <line x1="112" y1="68" x2="118" y2="104" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                            <circle cx="118" cy="106" r="10" fill="${c}"/>
+                            <circle cx="118" cy="106" r="4" fill="#090d16"/>
+                        </g>
+                        <path d="M145 108 L132 84 M130 92 L131 83 L140 87" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    </svg>`,
+
+                // Flexiones inclinadas en mesa/pared
+                inclinePushup: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Sturdy Table / Counter -->
+                        <path d="M35 145 L35 88 L75 88 L75 145" stroke="#64748b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <!-- Leaning Body -->
+                        <g class="anim-pushup">
+                            <circle cx="82" cy="48" r="10" fill="${c}"/>
+                            <line x1="88" y1="58" x2="142" y2="142" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="94" y1="68" x2="68" y2="88" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                        </g>
+                    </svg>`,
+
+                // Press de hombros (sentada o de pie)
+                shoulderPress: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Chair/Support outline -->
+                        <path d="M82 145 L82 105 L118 105 L118 145" stroke="#475569" stroke-width="3" fill="none"/>
+                        <!-- Torso & Head -->
+                        <circle cx="100" cy="54" r="11" fill="${c}"/>
+                        <line x1="100" y1="66" x2="100" y2="110" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Animated Arms pressing overhead -->
+                        <g class="anim-press">
+                            <path d="M100 72 L74 68 L74 44" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M100 72 L126 68 L126 44" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <rect x="65" y="38" width="18" height="7" rx="2" fill="${c}"/>
+                            <rect x="117" y="38" width="18" height="7" rx="2" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Aperturas con banda elástica
+                bandPullApart: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="40" r="11" fill="${c}"/>
+                        <line x1="100" y1="52" x2="100" y2="100" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="100" y1="100" x2="90" y2="145" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                        <line x1="100" y1="100" x2="110" y2="145" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                        <!-- Stretching Band & Arms -->
+                        <g class="anim-band">
+                            <line x1="100" y1="66" x2="62" y2="75" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                            <line x1="100" y1="66" x2="138" y2="75" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                            <line x1="62" y1="75" x2="138" y2="75" stroke="${c}" stroke-width="5" stroke-linecap="round"/>
+                        </g>
+                    </svg>`,
+
+                // Peso muerto sumo / Sentadilla sumo con pesa rusa
+                sumoKettlebell: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <g class="anim-squat">
+                            <circle cx="100" cy="36" r="11" fill="${c}"/>
+                            <line x1="100" y1="48" x2="100" y2="92" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Wide Sumo Thighs -->
+                            <line x1="100" y1="92" x2="68" y2="114" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="100" y1="92" x2="132" y2="114" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <!-- Arms & Kettlebell in center -->
+                            <line x1="100" y1="58" x2="100" y2="104" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="100" cy="112" r="10" fill="${c}"/>
+                        </g>
+                        <!-- Wide Shins -->
+                        <line x1="68" y1="114" x2="62" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <line x1="132" y1="114" x2="138" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                    </svg>`,
+
+                // Sentadilla con empuje (Thruster)
+                thruster: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <g class="anim-squat">
+                            <circle cx="100" cy="44" r="10" fill="${c}"/>
+                            <line x1="100" y1="55" x2="100" y2="96" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <line x1="100" y1="96" x2="84" y2="145" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                            <line x1="100" y1="96" x2="116" y2="145" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+                            <g class="anim-press">
+                                <line x1="92" y1="62" x2="76" y2="38" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="108" y1="62" x2="124" y2="38" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                                <rect x="68" y="32" width="16" height="6" rx="2" fill="${c}"/>
+                                <rect x="116" y="32" width="16" height="6" rx="2" fill="${c}"/>
+                            </g>
+                        </g>
+                    </svg>`,
+
+                // Marcha con carga unilateral / Marcha alta de pie
+                march: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="36" r="11" fill="${c}"/>
+                        <line x1="100" y1="48" x2="100" y2="94" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Unilateral load on one side -->
+                        <line x1="100" y1="56" x2="122" y2="90" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="124" cy="96" r="8" fill="${c}"/>
+                        <!-- Left Leg Marching -->
+                        <g class="anim-march-l">
+                            <path d="M96 94 L82 110 L82 142" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                        </g>
+                        <!-- Right Leg Marching -->
+                        <g class="anim-march-r">
+                            <path d="M104 94 L114 114 L114 142" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+                        </g>
+                    </svg>`,
+
+                // Patada de glúteo de pie con banda
+                gluteKickback: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Chair Backrest -->
+                        <path d="M62 145 L62 75 M52 108 L62 108" stroke="#64748b" stroke-width="4.5" stroke-linecap="round"/>
+                        <circle cx="96" cy="40" r="10" fill="${c}"/>
+                        <line x1="96" y1="52" x2="96" y2="96" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="96" y1="62" x2="62" y2="76" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Standing Leg -->
+                        <line x1="96" y1="96" x2="96" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <!-- Kicking Leg -->
+                        <g class="anim-kickback">
+                            <line x1="96" y1="96" x2="112" y2="142" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round"/>
+                            <circle cx="110" cy="135" r="5" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Peso muerto rumano con barra
+                romanianDeadlift: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Fixed Legs slightly bent -->
+                        <path d="M98 145 L102 118 L92 94" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <!-- Hinging Torso + Barbell -->
+                        <g class="anim-hinge">
+                            <line x1="92" y1="94" x2="100" y2="48" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                            <circle cx="102" cy="36" r="10" fill="${c}"/>
+                            <line x1="98" y1="58" x2="108" y2="102" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="109" cy="106" r="9" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Abducción de cadera de pie
+                hipAbduction: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Chair Support -->
+                        <line x1="65" y1="145" x2="65" y2="78" stroke="#64748b" stroke-width="4.5" stroke-linecap="round"/>
+                        <circle cx="100" cy="38" r="10" fill="${c}"/>
+                        <line x1="100" y1="50" x2="100" y2="96" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="100" y1="60" x2="65" y2="80" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="100" y1="96" x2="96" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <g class="anim-abduct">
+                            <line x1="100" y1="96" x2="112" y2="144" stroke="#e2e8f0" stroke-width="5.5" stroke-linecap="round"/>
+                            <rect x="94" y="132" width="22" height="5" rx="2" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Sentadilla isométrica en pared
+                wallSit: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Wall -->
+                        <line x1="68" y1="20" x2="68" y2="145" stroke="#64748b" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Seated Isometric Figure -->
+                        <circle cx="82" cy="48" r="10" fill="${c}"/>
+                        <path d="M76 60 L76 104 L116 104 L116 145" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <!-- Timer Pulse Effect -->
+                        <circle cx="145" cy="75" r="18" stroke="${c}" stroke-width="3" fill="none" class="anim-pulse"/>
+                        <path d="M145 65 L145 76 L152 76" stroke="${c}" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    </svg>`,
+
+                // Remo a una mano con apoyo en silla
+                oneArmRow: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Chair -->
+                        <path d="M62 145 L62 95 L88 95 L88 145 M62 95 L62 68" stroke="#64748b" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        <!-- Torso & Support Arm -->
+                        <circle cx="96" cy="56" r="10" fill="${c}"/>
+                        <line x1="102" y1="64" x2="136" y2="92" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="136" y1="92" x2="142" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <line x1="102" y1="66" x2="82" y2="95" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Pulling Arm -->
+                        <g class="anim-row">
+                            <line x1="114" y1="74" x2="114" y2="112" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                            <rect x="105" y="110" width="18" height="7" rx="2" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Curl de bíceps
+                bicepCurl: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="36" r="11" fill="${c}"/>
+                        <line x1="100" y1="48" x2="100" y2="98" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="100" y1="98" x2="94" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <line x1="100" y1="98" x2="108" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <!-- Upper arm fixed -->
+                        <line x1="100" y1="56" x2="100" y2="84" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                        <!-- Forearm curling -->
+                        <g class="anim-press">
+                            <line x1="100" y1="84" x2="124" y2="76" stroke="#e2e8f0" stroke-width="4.5" stroke-linecap="round"/>
+                            <circle cx="128" cy="74" r="8" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Extensión de tríceps sentada / tras nuca
+                tricepExt: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="56" r="11" fill="${c}"/>
+                        <line x1="100" y1="68" x2="100" y2="125" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Overhead Tricep Extension -->
+                        <g class="anim-press">
+                            <path d="M96 68 L84 42 L100 34 L116 42 L104 68" stroke="#cbd5e1" stroke-width="4" stroke-linejoin="round" fill="none"/>
+                            <circle cx="100" cy="30" r="8" fill="${c}"/>
+                        </g>
+                    </svg>`,
+
+                // Leñador de pie / Giros de torso (Core)
+                coreTwist: `
+                    <svg viewBox="0 0 200 160" class="w-full h-full">
+                        <line x1="20" y1="145" x2="180" y2="145" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="100" cy="38" r="11" fill="${c}"/>
+                        <line x1="100" y1="50" x2="100" y2="96" stroke="#e2e8f0" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="100" y1="96" x2="84" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <line x1="100" y1="96" x2="116" y2="145" stroke="#94a3b8" stroke-width="5.5" stroke-linecap="round"/>
+                        <g class="anim-chop">
+                            <line x1="100" y1="64" x2="118" y2="72" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round"/>
+                            <circle cx="122" cy="72" r="9" fill="${c}"/>
+                        </g>
+                    </svg>`
+            };
+            return svgs[type] || svgs.squatChair;
+        }
+
+        // ==========================================
+        // 2. COMPLETE WORKOUT DATA (AURA, FELIX, ETC.)
+        // ==========================================
+        const PROFILES = {
+            aura: {
+                id: "aura",
+                name: "Aura",
+                meta: "67 kg • Lunes a Viernes",
+                badge: "5 Días • Tonificación y Fuerza",
+                themeColor: "#cbd5e1", // Plata / Gris claro
+                accentClass: "slate",
+                glowClass: "led-glow-aura",
+                summaryTitle: "Plan de Tonificación y Fuerza (Cuerpo Completo)",
+                summaryDesc: "Sesiones de 22 a 25 minutos, 100% de pie o con apoyo en una silla firme (cero piso). Usar los guantes con muñequera ajustada en los días de barra y mancuernas.",
+                warmup: "Movilidad articular suave de hombros, cadera y tobillos, seguida de 1 minuto de marcha activa en el puesto (3 min).",
+                cooldown: "Masaje con el rodillo de espuma (foam roller) apoyándolo contra la pared para la espalda o sentada en una silla pasándolo con las manos por los muslos (3 min).",
+                restSuggestion: 60,
+                days: [
+                    {
+                        id: "lunes",
+                        label: "Lunes",
+                        focus: "Tren Inferior (Enfoque Cuádriceps y Glúteos)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "a_lun_1",
+                                name: "Sentadilla a la silla con pesa rusa",
+                                weight: "Pesa Rusa: 5 a 8 kg",
+                                desc: "Bajar controladamente hasta tocar apenas el asiento de una silla y subir sosteniendo el peso frente al pecho.",
+                                svg: "squatChair"
+                            },
+                            {
+                                id: "a_lun_2",
+                                name: "Desplantes estáticos",
+                                weight: "Mancuernas: 2 a 3 kg c/u (o apoyo en silla)",
+                                desc: "Un pie adelante y otro atrás, bajando en vertical con mancuernas livianas (o sosteniéndose de una silla al inicio).",
+                                svg: "lunge"
+                            },
+                            {
+                                id: "a_lun_3",
+                                name: "Caminata lateral con banda",
+                                weight: "Banda Elástica: Resistencia Media",
+                                desc: "Colocar una banda de resistencia media sobre las rodillas y dar pasos laterales en semisentadilla.",
+                                svg: "lateralBand"
+                            },
+                            {
+                                id: "a_lun_4",
+                                name: "Elevación de talones de pie",
+                                weight: "Mancuernas: 2 a 3 kg c/u",
+                                desc: "Subir y bajar en puntas de pie sosteniendo las mancuernas a los lados para fortalecer las pantorrillas.",
+                                svg: "calfRaise"
+                            }
+                        ]
+                    },
+                    {
+                        id: "martes",
+                        label: "Martes",
+                        focus: "Tren Superior (Espalda, Pecho y Hombros)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "a_mar_1",
+                                name: "Remo inclinado con barra",
+                                weight: "Barra: 5 a 8 kg + Guantes",
+                                desc: "Inclinada ligeramente hacia adelante con la espalda recta, llevar la barra hacia el abdomen apretando la espalda.",
+                                svg: "barbellRow"
+                            },
+                            {
+                                id: "a_mar_2",
+                                name: "Flexiones inclinadas",
+                                weight: "Peso Corporal (En mesa firme o pared)",
+                                desc: "Manos apoyadas en el borde de una mesa firme o la pared para trabajar pecho y brazos sin bajar al piso.",
+                                svg: "inclinePushup"
+                            },
+                            {
+                                id: "a_mar_3",
+                                name: "Press de hombros sentada",
+                                weight: "Mancuernas: 2 a 3 kg c/u",
+                                desc: "En una silla con respaldo firme, subir las mancuernas desde la altura de las orejas hacia el techo.",
+                                svg: "shoulderPress"
+                            },
+                            {
+                                id: "a_mar_4",
+                                name: "Aperturas con banda elástica",
+                                weight: "Banda Elástica: Suave",
+                                desc: "Estirar una banda suave frente al pecho hacia los lados juntando las escápulas para mejorar la postura.",
+                                svg: "bandPullApart"
+                            }
+                        ]
+                    },
+                    {
+                        id: "miercoles",
+                        label: "Miércoles",
+                        focus: "Cuerpo Completo Funcional y Abdomen de Pie",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "a_mie_1",
+                                name: "Peso muerto sumo con pesa rusa",
+                                weight: "Pesa Rusa: 6 a 8 kg",
+                                desc: "Piernas separadas con puntas hacia afuera, bajando la pesa entre las piernas con la espalda recta.",
+                                svg: "sumoKettlebell"
+                            },
+                            {
+                                id: "a_mie_2",
+                                name: "Sentadilla con empuje (Thruster)",
+                                weight: "Mancuernas: 2 a 3 kg c/u",
+                                desc: "Bajar en sentadilla con mancuernas livianas y aprovechar el impulso al subir para estirar los brazos arriba.",
+                                svg: "thruster"
+                            },
+                            {
+                                id: "a_mie_3",
+                                name: "Marcha con carga unilateral (Core)",
+                                weight: "1 Mancuerna o Pesa Rusa: 4 a 5 kg",
+                                desc: "Caminar lento en el puesto elevando las rodillas mientras sostiene una pesa de un solo lado para activar el abdomen.",
+                                svg: "march"
+                            },
+                            {
+                                id: "a_mie_4",
+                                name: "Patada de glúteo de pie",
+                                weight: "Banda en tobillos + Silla",
+                                desc: "Banda en los tobillos, manos en el respaldo de una silla y extender una pierna hacia atrás apretando el glúteo.",
+                                svg: "gluteKickback"
+                            }
+                        ]
+                    },
+                    {
+                        id: "jueves",
+                        label: "Jueves",
+                        focus: "Tren Inferior (Enfoque Isquiotibiales y Glúteos)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "a_jue_1",
+                                name: "Peso muerto rumano con barra",
+                                weight: "Barra: 6 a 8 kg + Guantes",
+                                desc: "Deslizar la barra pegada a los muslos llevando la cadera hacia atrás con las rodillas semidobladas.",
+                                svg: "romanianDeadlift"
+                            },
+                            {
+                                id: "a_jue_2",
+                                name: "Zancada hacia atrás",
+                                weight: "Mancuernas: 2 a 3 kg c/u",
+                                desc: "Dar un paso largo hacia atrás bajando de forma controlada mientras sostiene las mancuernas a los costados.",
+                                svg: "lunge"
+                            },
+                            {
+                                id: "a_jue_3",
+                                name: "Abducción de cadera de pie",
+                                weight: "Banda en tobillos + Silla",
+                                desc: "Con la banda en los tobillos y apoyo en la silla, abrir una pierna hacia el costado sin inclinar el tronco.",
+                                svg: "hipAbduction"
+                            },
+                            {
+                                id: "a_jue_4",
+                                name: "Sentadilla isométrica en pared",
+                                weight: "20 a 30 segundos por serie",
+                                desc: "Apoyar la espalda en la pared bajando a media altura y mantener la posición durante 20 a 30 segundos.",
+                                svg: "wallSit"
+                            }
+                        ]
+                    },
+                    {
+                        id: "viernes",
+                        label: "Viernes",
+                        focus: "Tren Superior (Brazos, Postura y Core)",
+                        repsInfo: "3 series de 10 a 12 repeticiones • 45 a 60s de descanso",
+                        exercises: [
+                            {
+                                id: "a_vie_1",
+                                name: "Remo a una mano",
+                                weight: "Mancuerna: 3 a 4 kg",
+                                desc: "Apoyar una mano en el asiento de la silla y llevar una mancuerna con el brazo libre hacia la cadera.",
+                                svg: "oneArmRow"
+                            },
+                            {
+                                id: "a_vie_2",
+                                name: "Curl de bíceps con barra o mancuernas",
+                                weight: "Mancuernas: 2 a 3 kg c/u",
+                                desc: "De pie con los codos pegados al torso, subir el peso controlando el movimiento de bajada.",
+                                svg: "bicepCurl"
+                            },
+                            {
+                                id: "a_vie_3",
+                                name: "Extensión de tríceps sentada",
+                                weight: "1 Mancuerna o Pesa Rusa: 3 a 4 kg",
+                                desc: "Sostener una mancuerna o la pesa rusa con ambas manos detrás de la cabeza y estirar los codos hacia arriba.",
+                                svg: "tricepExt"
+                            },
+                            {
+                                id: "a_vie_4",
+                                name: "Leñador de pie (Core)",
+                                weight: "1 Mancuerna liviana: 2 a 3 kg",
+                                desc: "Con el abdomen firme, llevar una mancuerna liviana en diagonal desde la cadera hasta el hombro opuesto.",
+                                svg: "coreTwist"
+                            }
+                        ]
+                    }
+                ]
+            },
+
+            felix: {
+                id: "felix",
+                name: "Felix",
+                meta: "85-90 kg • Mar, Jue y Sáb",
+                badge: "3 Días • Salud y Pérdida de Peso",
+                themeColor: "#06b6d4", // Cyan
+                accentClass: "cyan",
+                glowClass: "led-glow-felix",
+                summaryTitle: "Plan de Adaptación, Fuerza Base y Quema Calórica",
+                summaryDesc: "Sesiones de 20 a 25 minutos a ritmo controlado para retomar desde cero sin sobrecargar el talón ni ahogarse. 3 series de 10 repeticiones con 60 a 75s de descanso.",
+                warmup: "Movilidad suave de hombros, cintura y cadera de pie, seguida de 1 minuto de marcha activa en el puesto con calzado deportivo cómodo (4 min).",
+                cooldown: "Masaje de descarga con el rodillo de espuma en la espalda contra la pared y sentado pasándolo por los muslos (3 min).",
+                restSuggestion: 60,
+                days: [
+                    {
+                        id: "martes",
+                        label: "Martes",
+                        focus: "Fuerza Base y Activación",
+                        repsInfo: "3 series de 10 repeticiones • 60 a 75s de descanso",
+                        exercises: [
+                            {
+                                id: "f_mar_1",
+                                name: "Sentadilla libre con pesa al pecho",
+                                weight: "Pesa Rusa: 8 a 10 kg",
+                                desc: "De pie con las piernas al ancho de los hombros, bajar a media altura sosteniendo la pesa rusa pegada al pecho.",
+                                svg: "squatChair"
+                            },
+                            {
+                                id: "f_mar_2",
+                                name: "Remo inclinado con barra",
+                                weight: "Barra: 8 a 10 kg + Guantes",
+                                desc: "Con las rodillas semidobladas y el torso inclinado hacia adelante, llevar la barra hacia el abdomen apretando la espalda.",
+                                svg: "barbellRow"
+                            },
+                            {
+                                id: "f_mar_3",
+                                name: "Flexiones inclinadas",
+                                weight: "Peso Corporal (En mesón o mesa firme)",
+                                desc: "Manos apoyadas en el borde de un mesón o mesa firme para trabajar pecho y tríceps con una inclinación cómoda.",
+                                svg: "inclinePushup"
+                            },
+                            {
+                                id: "f_mar_4",
+                                name: "Marcha alta de pie (Cardio suave)",
+                                weight: "35 segundos continuos por serie",
+                                desc: "Caminar en el puesto a ritmo constante durante 35 segundos elevando las rodillas y moviendo los brazos para activar la quema calórica sin impacto.",
+                                svg: "march"
+                            }
+                        ]
+                    },
+                    {
+                        id: "jueves",
+                        label: "Jueves",
+                        focus: "Espalda, Piernas y Postura",
+                        repsInfo: "3 series de 10 repeticiones • 60 a 75s de descanso",
+                        exercises: [
+                            {
+                                id: "f_jue_1",
+                                name: "Peso muerto rumano con barra",
+                                weight: "Barra: 8 a 10 kg + Guantes",
+                                desc: "Deslizar la barra por los muslos hasta las rodillas llevando la cadera hacia atrás con la espalda totalmente recta.",
+                                svg: "romanianDeadlift"
+                            },
+                            {
+                                id: "f_jue_2",
+                                name: "Paso atrás corto (Sin peso extra)",
+                                weight: "Solo Peso Corporal (10 por pierna)",
+                                desc: "Dar un paso hacia atrás flexionando ligeramente ambas rodillas y regresar al centro, usando solo su propio peso corporal las primeras semanas.",
+                                svg: "lunge"
+                            },
+                            {
+                                id: "f_jue_3",
+                                name: "Press de hombros de pie",
+                                weight: "Mancuernas: 3 a 4 kg c/u",
+                                desc: "Subir un par de mancuernas desde la altura de los hombros hacia el techo manteniendo el abdomen firme.",
+                                svg: "shoulderPress"
+                            },
+                            {
+                                id: "f_jue_4",
+                                name: "Aperturas con banda de pie",
+                                weight: "Banda Elástica: Media / Suave",
+                                desc: "Estirar una banda elástica frente al pecho abriendo los brazos en cruz para fortalecer la espalda alta y mejorar la postura.",
+                                svg: "bandPullApart"
+                            }
+                        ]
+                    },
+                    {
+                        id: "sabado",
+                        label: "Sábado",
+                        focus: "Resistencia Muscular y Cintura",
+                        repsInfo: "3 series de 10 repeticiones • 60 a 75s de descanso",
+                        exercises: [
+                            {
+                                id: "f_sab_1",
+                                name: "Sentadilla sumo con pesa rusa",
+                                weight: "Pesa Rusa: 8 a 10 kg",
+                                desc: "Separar bien los pies con las puntas hacia afuera y bajar sosteniendo la pesa rusa con ambas manos en el centro.",
+                                svg: "sumoKettlebell"
+                            },
+                            {
+                                id: "f_sab_2",
+                                name: "Remo a una mano con apoyo",
+                                weight: "Mancuerna: 4 kg (10 por brazo)",
+                                desc: "Apoyar la mano libre en el respaldo de una silla y subir una mancuerna hacia la cadera sin fatigar la zona lumbar.",
+                                svg: "oneArmRow"
+                            },
+                            {
+                                id: "f_sab_3",
+                                name: "Curl de bíceps con barra",
+                                weight: "Barra: 6 a 8 kg + Guantes",
+                                desc: "De pie con los codos pegados al torso, subir y bajar la barra controlando el movimiento.",
+                                svg: "bicepCurl"
+                            },
+                            {
+                                id: "f_sab_4",
+                                name: "Giros de torso de pie (Core)",
+                                weight: "1 Mancuerna ligera: 3 kg",
+                                desc: "Con las plantas fijas y las rodillas ligeramente sueltas, girar el tronco de lado a lado sosteniendo una mancuerna ligera frente al pecho.",
+                                svg: "coreTwist"
+                            }
+                        ]
+                    }
+                ]
+            },
+
+           dylan: {
+                id: "dylan",
+                name: "Dylan",
+                meta: "En construcción",
+                badge: "En configuración",
+                themeColor: "#e11d48", // Rojo Carmesí
+                accentClass: "rose",
+                glowClass: "led-glow-dylan",
+                placeholder: true,
+                placeholderText: "Espacio reservado para rutina personalizada de Dylan (Fuerza, Calistenia o Hipertrofia con el kit de 20 kg y bandas)."
+            },
+
+            jesus: {
+                id: "jesus",
+                name: "Jesus",
+                meta: "En construcción",
+                badge: "En configuración",
+                themeColor: "#ffffff", // Blanco
+                accentClass: "white",
+                glowClass: "led-glow-jesus",
+                placeholder: true,
+                placeholderText: "Espacio reservado para agregar la rutina de Jesús cuando decidan sus días y objetivos."
+            }
+        };
+
+        // ==========================================
+        // 3. STATE & STORAGE MANAGEMENT
+        // ==========================================
+        let currentProfileId = localStorage.getItem("gym_active_profile") || "aura";
+        let currentDayId = localStorage.getItem(`gym_active_day_${currentProfileId}`) || "lunes";
+
+        // Validate day exists in profile
+        function ensureValidDay() {
+            const profile = PROFILES[currentProfileId];
+            if (profile.placeholder) return;
+            const exists = profile.days.some(d => d.id === currentDayId);
+            if (!exists) {
+                currentDayId = profile.days[0].id;
+            }
+        }
+
+        function getSeriesState(exerciseId, serieNum) {
+            return localStorage.getItem(`gym_check_${exerciseId}_s${serieNum}`) === "true";
+        }
+
+        function toggleSeriesState(exerciseId, serieNum, suggestedRest) {
+            const key = `gym_check_${exerciseId}_s${serieNum}`;
+            const current = localStorage.getItem(key) === "true";
+            const nextState = !current;
+            localStorage.setItem(key, nextState);
+            renderWorkoutContent();
+
+            // Auto-start rest timer when checking a set complete
+            if (nextState && suggestedRest) {
+                startRestTimer(suggestedRest);
+            }
+        }
+
+        function resetCurrentDayProgress() {
+            const profile = PROFILES[currentProfileId];
+            if (profile.placeholder) return;
+            const dayObj = profile.days.find(d => d.id === currentDayId);
+            if (!dayObj) return;
+
+            dayObj.exercises.forEach(ex => {
+                [1, 2, 3].forEach(s => {
+                    localStorage.removeItem(`gym_check_${ex.id}_s${s}`);
+                });
+            });
+            renderWorkoutContent();
+        }
+
+        // ==========================================
+        // 4. UI RENDERING FUNCTIONS
+        // ==========================================
+        function selectProfile(profileId) {
+            currentProfileId = profileId;
+            localStorage.setItem("gym_active_profile", profileId);
+            const savedDay = localStorage.getItem(`gym_active_day_${profileId}`);
+            if (savedDay) currentDayId = savedDay;
+            ensureValidDay();
+            renderAll();
+        }
+
+        function selectDay(dayId) {
+            currentDayId = dayId;
+            localStorage.setItem(`gym_active_day_${currentProfileId}`, dayId);
+            renderDayTabs();
+            renderWorkoutContent();
+        }
+
+        const THEME_STYLES = {
+            aura: {
+                ambient: "bg-slate-400/15",
+                pill: "bg-slate-400/15 text-slate-200 border-slate-400/30",
+                brand: "bg-slate-400/20 border-slate-400/40 text-slate-200",
+                cardSelected: "border-slate-300 bg-slate-400/15 text-white shadow-lg shadow-slate-950/60",
+                dot: "bg-slate-200",
+                badge: "bg-slate-400/20 text-slate-200 border-slate-400/30",
+                dayTab: "bg-slate-300 text-slate-950 font-extrabold border-slate-200 shadow-lg shadow-slate-300/20",
+                tag: "bg-slate-400/15 text-slate-200 border-slate-400/30",
+                checkActive: "bg-slate-300 border-slate-200 text-slate-950 font-extrabold shadow-md shadow-slate-300/20",
+                placeholderIcon: "bg-slate-400/20 border-slate-400/30 text-slate-200"
+            },
+            felix: {
+                ambient: "bg-cyan-500/15",
+                pill: "bg-cyan-500/15 text-cyan-400 border-cyan-500/30",
+                brand: "bg-cyan-500/20 border-cyan-500/40 text-cyan-400",
+                cardSelected: "border-cyan-500 bg-cyan-500/15 text-white shadow-lg shadow-cyan-950/50",
+                dot: "bg-cyan-400",
+                badge: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
+                dayTab: "bg-cyan-500 text-slate-950 font-extrabold border-cyan-400 shadow-lg shadow-cyan-500/20",
+                tag: "bg-cyan-500/15 text-cyan-300 border-cyan-500/30",
+                checkActive: "bg-cyan-500 border-cyan-400 text-slate-950 font-extrabold shadow-md shadow-cyan-500/20",
+                placeholderIcon: "bg-cyan-500/20 border-cyan-500/30 text-cyan-300"
+            },
+            dylan: {
+                ambient: "bg-rose-600/15",
+                pill: "bg-rose-600/15 text-rose-400 border-rose-500/30",
+                brand: "bg-rose-600/20 border-rose-500/40 text-rose-400",
+                cardSelected: "border-rose-600 bg-rose-600/15 text-white shadow-lg shadow-rose-950/50",
+                dot: "bg-rose-500",
+                badge: "bg-rose-600/20 text-rose-300 border-rose-500/30",
+                dayTab: "bg-rose-600 text-white font-extrabold border-rose-500 shadow-lg shadow-rose-600/25",
+                tag: "bg-rose-600/15 text-rose-300 border-rose-500/30",
+                checkActive: "bg-rose-600 border-rose-500 text-white font-extrabold shadow-md shadow-rose-600/25",
+                placeholderIcon: "bg-rose-600/20 border-rose-500/30 text-rose-400"
+            },
+            jesus: {
+                ambient: "bg-white/10",
+                pill: "bg-white/15 text-white border-white/30",
+                brand: "bg-white/15 border-white/40 text-white",
+                cardSelected: "border-white bg-white/15 text-white shadow-lg shadow-white/10",
+                dot: "bg-white",
+                badge: "bg-white/15 text-white border-white/30",
+                dayTab: "bg-white text-slate-950 font-extrabold border-white shadow-lg shadow-white/20",
+                tag: "bg-white/15 text-white border-white/30",
+                checkActive: "bg-white border-white text-slate-950 font-extrabold shadow-md shadow-white/20",
+                placeholderIcon: "bg-white/15 border-white/30 text-white"
+            }
+        };
+
+        function renderProfileSelector() {
+            const container = document.getElementById("profile-selector");
+            const profile = PROFILES[currentProfileId];
+            const theme = THEME_STYLES[currentProfileId] || THEME_STYLES.aura;
+
+            const ambientBg = document.getElementById("ambient-bg");
+            const statusPill = document.getElementById("profile-status-pill");
+            const brandBadge = document.getElementById("brand-badge");
+
+            statusPill.textContent = profile.badge;
+            ambientBg.className = `fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 ${theme.ambient} blur-3xl pointer-events-none transition-colors duration-500 -z-10`;
+            statusPill.className = `text-xs font-semibold px-2.5 py-0.5 rounded-full border ${theme.pill}`;
+            brandBadge.className = `w-10 h-10 rounded-xl border flex items-center justify-center font-extrabold text-lg ${theme.brand}`;
+
+            container.innerHTML = Object.values(PROFILES).map(p => {
+                const isSelected = p.id === currentProfileId;
+                const pTheme = THEME_STYLES[p.id] || THEME_STYLES.aura;
+                const borderClass = isSelected
+                    ? pTheme.cardSelected
+                    : "border-slate-800 bg-slate-900/60 text-slate-400 hover:bg-slate-800/70";
+                const dotColor = isSelected ? pTheme.dot : "bg-slate-600";
+
+                return `
+                    <button onclick="selectProfile('${p.id}')" class="flex flex-col items-start p-3 rounded-2xl border-2 transition-all text-left active:scale-95 ${borderClass}">
+                        <div class="flex items-center justify-between w-full mb-1">
+                            <span class="font-extrabold text-sm sm:text-base tracking-tight">${p.name}</span>
+                            <span class="w-2.5 h-2.5 rounded-full ${dotColor}"></span>
+                        </div>
+                        <span class="text-[11px] text-slate-400 line-clamp-1">${p.meta}</span>
+                    </button>
+                `;
+            }).join("");
+        }
+
+        function renderProfileBanner() {
+            const banner = document.getElementById("profile-banner");
+            const profile = PROFILES[currentProfileId];
+            const theme = THEME_STYLES[currentProfileId] || THEME_STYLES.aura;
+            banner.className = `rounded-2xl bg-slate-900/90 border border-slate-800 p-4 transition-all duration-300 ${profile.glowClass}`;
+
+            if (profile.placeholder) {
+                banner.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl border flex items-center justify-center text-2xl ${theme.placeholderIcon}">
+                            🛠️
+                        </div>
+                        <div>
+                            <h2 class="text-base font-bold text-white">Perfil de ${profile.name} en espera</h2>
+                            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">${profile.placeholderText}</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            banner.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <h2 class="text-base sm:text-lg font-extrabold text-white">${profile.summaryTitle}</h2>
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded-lg border ${theme.badge}">Sin Colchoneta</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">${profile.summaryDesc}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDayTabs() {
+            const section = document.getElementById("day-tabs-section");
+            const container = document.getElementById("day-tabs");
+            const profile = PROFILES[currentProfileId];
+            const theme = THEME_STYLES[currentProfileId] || THEME_STYLES.aura;
+
+            if (profile.placeholder) {
+                section.classList.add("hidden");
+                return;
+            }
+            section.classList.remove("hidden");
+
+            container.innerHTML = profile.days.map(d => {
+                const isSelected = d.id === currentDayId;
+                let completedSets = 0;
+                d.exercises.forEach(ex => {
+                    [1, 2, 3].forEach(s => {
+                        if (getSeriesState(ex.id, s)) completedSets++;
+                    });
+                });
+                const allDone = completedSets === d.exercises.length * 3;
+                const btnStyle = isSelected
+                    ? theme.dayTab
+                    : "bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800";
+
+                return `
+                    <button onclick="selectDay('${d.id}')" class="flex-1 min-w-[95px] py-2.5 px-3.5 rounded-xl border text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 ${btnStyle}">
+                        <span>${d.label}</span>
+                        ${allDone ? '<span>✅</span>' : completedSets > 0 ? `<span class="text-[11px] opacity-80">(${completedSets}/12)</span>` : ''}
+                    </button>
+                `;
+            }).join("");
+        }
+
+        function renderWorkoutContent() {
+            const container = document.getElementById("workout-container");
+            const profile = PROFILES[currentProfileId];
+            const theme = THEME_STYLES[currentProfileId] || THEME_STYLES.aura;
+
+            if (profile.placeholder) {
+                container.innerHTML = `
+                    <div class="rounded-2xl bg-slate-900/60 border border-slate-800 p-8 text-center space-y-3">
+                        <div class="text-4xl">📋</div>
+                        <h3 class="text-lg font-bold text-white">Rutina lista para configurar</h3>
+                        <p class="text-sm text-slate-400 max-w-md mx-auto">
+                            Cuando quieras armar esta rutina, solo dime qué días entrenará y cuál es su meta para agregar sus ejercicios aquí mismo.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            const dayObj = profile.days.find(d => d.id === currentDayId) || profile.days[0];
+            const accentHex = profile.themeColor;
+
+            let totalSets = dayObj.exercises.length * 3;
+            let doneSets = 0;
+            dayObj.exercises.forEach(ex => {
+                [1, 2, 3].forEach(s => { if (getSeriesState(ex.id, s)) doneSets++; });
+            });
+            let progressPct = Math.round((doneSets / totalSets) * 100);
+
+            const exercisesHTML = dayObj.exercises.map((ex, idx) => {
+                const s1 = getSeriesState(ex.id, 1);
+                const s2 = getSeriesState(ex.id, 2);
+                const s3 = getSeriesState(ex.id, 3);
+                const exDone = s1 && s2 && s3;
+
+                return `
+                    <article class="rounded-2xl bg-slate-900/95 border ${exDone ? 'border-emerald-500/50' : 'border-slate-800'} p-4 sm:p-5 transition-all">
+                        <div class="flex flex-col sm:flex-row gap-4 items-center">
+                            <div class="w-full sm:w-44 h-40 rounded-xl bg-[#0b111e] border border-slate-800/90 flex items-center justify-center p-2 shrink-0 relative overflow-hidden">
+                                <span class="absolute top-2 left-2.5 text-xs font-extrabold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300">
+                                    #${idx + 1}
+                                </span>
+                                ${exDone ? `<span class="absolute top-2 right-2.5 text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">¡Listo!</span>` : ''}
+                                ${getExerciseSVG(ex.svg, accentHex)}
+                            </div>
+
+                            <div class="flex-1 w-full space-y-2.5">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <h4 class="text-lg sm:text-xl font-extrabold text-white leading-snug">${ex.name}</h4>
+                                    <span class="text-xs font-bold px-2.5 py-1 rounded-lg border ${theme.tag}">
+                                        ⚖️ ${ex.weight}
+                                    </span>
+                                </div>
+
+                                <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                                    ${ex.desc}
+                                </p>
+
+                                <div class="pt-2">
+                                    <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                                        Marca cada serie al terminar (inicia descanso de ${profile.restSuggestion}s):
+                                    </p>
+                                    <div class="grid grid-cols-3 gap-2.5">
+                                        ${[1, 2, 3].map(sNum => {
+                                            const checked = getSeriesState(ex.id, sNum);
+                                            return `
+                                                <button onclick="toggleSeriesState('${ex.id}', ${sNum}, ${profile.restSuggestion})"
+                                                    class="py-3 px-3 rounded-xl border text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 active:scale-95 ${checked ? theme.checkActive : 'bg-slate-800/80 border-slate-700 text-slate-300 hover:bg-slate-800'}">
+                                                    <span>${checked ? '✓' : '○'}</span>
+                                                    <span>Serie ${sNum}</span>
+                                                </button>
+                                            `;
+                                        }).join("")}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join("");
+
+            container.innerHTML = `
+                <div class="rounded-2xl bg-slate-900/80 border border-slate-800 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">${dayObj.label}</span>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-white">${dayObj.focus}</h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-0.5">${dayObj.repsInfo}</p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-slate-950/70 px-3.5 py-2.5 rounded-xl border border-slate-800">
+                        <div class="text-right">
+                            <span class="text-xs text-slate-400 block">Progreso hoy</span>
+                            <span class="text-sm font-extrabold text-white">${doneSets} de ${totalSets} series (${progressPct}%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-lg shrink-0">
+                        🔥
+                    </div>
+                    <div>
+                        <h4 class="text-sm sm:text-base font-extrabold text-amber-300">1. Calentamiento Activo</h4>
+                        <p class="text-xs sm:text-sm text-slate-200 mt-0.5 leading-relaxed">${profile.warmup}</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3.5">
+                    ${exercisesHTML}
+                </div>
+
+                <div class="rounded-2xl bg-indigo-500/10 border border-indigo-500/30 p-4 flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-lg shrink-0">
+                        🧘‍♀️
+                    </div>
+                    <div>
+                        <h4 class="text-sm sm:text-base font-extrabold text-indigo-300">3. Recuperación con Rodillo de Espuma (Foam Roller)</h4>
+                        <p class="text-xs sm:text-sm text-slate-200 mt-0.5 leading-relaxed">${profile.cooldown}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAll() {
+            renderProfileSelector();
+            renderProfileBanner();
+            renderDayTabs();
+            renderWorkoutContent();
+        }
+
+        // ==========================================
+        // 5. REST TIMER & WEB AUDIO API BEEP
+        // ==========================================
+        let timerInterval = null;
+        let remainingSeconds = 0;
+        let totalTimerSeconds = 0;
+
+        function playBeep() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const playTone = (freq, start, duration) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = "sine";
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime + start);
+                    gain.gain.setValueAtTime(0.25, ctx.currentTime + start);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + start);
+                    osc.stop(ctx.currentTime + start + duration);
+                };
+                playTone(587.33, 0, 0.18);    // D5
+                playTone(880, 0.2, 0.35);     // A5
+            } catch (e) {
+                // AudioContext blocked or unsupported
+            }
+        }
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+
+        function startRestTimer(seconds) {
+            clearInterval(timerInterval);
+            totalTimerSeconds = seconds;
+            remainingSeconds = seconds;
+            updateTimerUI();
+
+            timerInterval = setInterval(() => {
+                remainingSeconds--;
+                updateTimerUI();
+
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    playBeep();
+                    const statusText = document.getElementById("timer-status-text");
+                    const badge = document.getElementById("timer-badge");
+                    statusText.textContent = "¡Tiempo cumplido! A darle a la siguiente serie";
+                    statusText.className = "text-xs font-extrabold text-emerald-400 uppercase tracking-wide";
+                    badge.className = "w-11 h-11 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-mono text-lg font-extrabold animate-bounce";
+                }
+            }, 1000);
+        }
+
+        function stopRestTimer() {
+            clearInterval(timerInterval);
+            remainingSeconds = 0;
+            totalTimerSeconds = 0;
+            const badge = document.getElementById("timer-badge");
+            const bar = document.getElementById("timer-bar");
+            const statusText = document.getElementById("timer-status-text");
+
+            badge.textContent = "00:00";
+            badge.className = "w-11 h-11 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-mono text-lg font-extrabold text-white";
+            bar.style.width = "0%";
+            statusText.textContent = "Descanso";
+            statusText.className = "text-xs font-bold text-slate-300 uppercase tracking-wide";
+        }
+
+        function updateTimerUI() {
+            const badge = document.getElementById("timer-badge");
+            const bar = document.getElementById("timer-bar");
+            const statusText = document.getElementById("timer-status-text");
+
+            badge.textContent = formatTime(remainingSeconds);
+            badge.className = "w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center font-mono text-lg font-extrabold text-emerald-300";
+            statusText.textContent = `Descansando (${totalTimerSeconds}s)...`;
+            statusText.className = "text-xs font-bold text-emerald-400 uppercase tracking-wide";
+
+            const pct = totalTimerSeconds > 0 ? ((totalTimerSeconds - remainingSeconds) / totalTimerSeconds) * 100 : 0;
+            bar.style.width = `${pct}%`;
+        }
+
+        // ==========================================
+        // 6. MODAL TOGGLE & INIT
+        // ==========================================
+        function toggleEquipmentModal() {
+            const modal = document.getElementById("equipment-modal");
+            if (modal.classList.contains("hidden")) {
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+            } else {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+            }
+        }
+
+        window.onload = function () {
+            ensureValidDay();
+            renderAll();
+        };
+    </script>
+</body>
+</html>
